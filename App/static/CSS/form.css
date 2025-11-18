@@ -1,0 +1,226 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 1, 1, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+#form-content {
+    background-color: rgb(240, 234, 234);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    z-index: 1001
+}
+.my-form{
+    background-color: rgba(239, 238, 240, 0.5);
+    border: 2px;
+    border-radius: 8px;
+
+}
+/* Basic form styles */
+.my-form label, .my-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+/*
+.my-form input[type="text"],
+.my-form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+    */
+.my-form input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: rgb(101, 100, 100);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.link-container {
+    /* Modern standard property */
+    overflow-wrap: break-word; 
+    /* Older, widely supported alias */
+    word-wrap: break-word; 
+}
+
+      :root {
+        --bs-primary-dark: #800000; /* Darker red/maroon for top/bottom bars */
+        --bs-text-color: #333;
+      }
+      /* HEADER STYLES */
+      .top-bar-maroon {
+        background-color: var(--bs-primary-dark);
+        padding: 5px 0; /* Adding padding to contain the nav icons */
+      }
+      .navbar-nav .nav-link-custom {
+        color: white; /* Icons and text are white against the maroon bar */
+        font-weight: 500;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        /* Custom style for the active (Competitions) link */
+        color: #100d03; /* Yellowish color for the active link in the image */
+      }
+      .navbar-nav .nav-link-custom img {
+        width: 30px; /* Icon size */
+        height: 30px;
+        margin-bottom: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* SEARCH AND CONTENT STYLES */
+      .main-content {
+        min-height: 70vh; /* Ensure content area is tall */
+        padding-top: 50px;
+        padding-bottom: 30px;
+        background-color: white;
+      }
+      .search-container {
+        max-width: 600px;
+        margin: 0 auto 50px;
+      }
+      .search-input {
+        background-color: #e9ecef; /* Light gray background for input */
+        border: none;
+        border-radius: 50rem; /* Pill shape */
+        padding-right: 45px;
+        height: 50px;
+      }
+      .add-competition-btn {
+        background-color: #e9ecef; /* Light grey button background */
+        color: var(--bs-text-color); /* Dark text for button */
+        border: 2px saddlebrown;;
+        border-radius: 50rem; /* Pill shape */
+        padding: .5rem 1.5rem;
+        margin-top: 1rem; /* Space above button */
+      }
+      .search-button {
+        background-color: #0dcaf0; /* Default Bootstrap info/cyan color for the button/icon */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+      }
+      #addcompetition{
+        margin-left: 70%;
+      }
+      /* COMPETITION LIST STYLES */
+      .competition-item {
+        background-color: #f8f9fa; /* Light grey background for each item */
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        /* Custom line styles to match the font and spacing */
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+      .competition-item strong {
+        font-weight: 700;
+        margin-right: 5px;
+      }
+      .competition-item .category {
+        font-weight: bold;
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 2px;
+        color: #000;
+      }
+      .competition-item .deadline {
+        font-weight: bold;
+        display: block;
+        color: #000;
+        margin-bottom: 5px;
+      }
+      /* FOOTER STYLES */
+      .footer-bottom {
+        background-color: var(--bs-primary-dark); /* Dark red/maroon bottom */
+        color: white;
+        padding: 15px 0;
+        font-size: 0.9em;
+      }
+
+            :root {
+        --bs-primary-dark: #800000; /* maroon */
+        --bs-secondary-dark: #4b0082; /* indigo */
+        --bs-text-color: #333;
+      }
+
+      body {
+        overflow-x: hidden;
+        background-color: #f8f9fa;
+        min-height: 100vh;
+      }
+
+      .top-bar {
+        height: 10px;
+        background-color: var(--bs-primary-dark);
+      }
+
+      .text-maroon {
+        color: var(--bs-primary-dark) !important;
+      }
+
+              /* Competition Card/List Item Styling for Admin View */
+        .competition-card {
+            background-color: #ffffff; /* White card background */
+            border: 1px solid #e9ecef;
+            border-left: 5px solid var(--bs-primary-dark); /* Accent line on the left */
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .competition-card .details-section {
+            border-right: 1px solid #dee2e6;
+            padding-right: 15px;
+        }
+
+        .competition-card .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Button Styling */
+        .btn-maroon {
+            background-color: var(--bs-primary-dark);
+            border-color: var(--bs-primary-dark);
+            color: white;
+        }
+        .btn-maroon:hover {
+            background-color: #a00000; /* Slightly lighter maroon on hover */
+            border-color: #a00000;
+            color: white;
+        }
+
+        /* Footer */
+        .footer-bottom {
+            background-color: var(--bs-primary-dark);
+            color: white;
+            padding: 15px 0;
+            font-size: 0.9em;
+        }
+        

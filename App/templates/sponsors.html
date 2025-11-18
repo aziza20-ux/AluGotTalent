@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALU Talent Platform - Sponsors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8c8S9i30sN6Q6yL3l0/T3N+K7Jz22uB/2G5yX8s+E2G+2Q+2K+2Q+2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../static/CSS/form.css">
+
+    <style>
+      /* Custom styles to match the images' color schemes */
+      :root {
+        --bs-primary-dark: #800000; /* Darker red/maroon for header/bottom bar */
+        --bs-text-color: #333;
+      }
+      /* HEADER STYLES (Maroon Bar with Thin Dark Top Border) */
+      .top-header-maroon {
+        background-color: var(--bs-primary-dark);
+        padding: 10px 0;
+        position: relative;
+      }
+      .top-header-maroon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px; /* Thin dark line at the very top */
+        background-color: #4b0082; 
+      }
+      .navbar-nav-icons {
+        justify-content: center;
+        flex-grow: 1;
+      }
+      .text-maroon {
+        color: var(--bs-primary-dark) !important;
+      }
+      .navbar-nav-icons .nav-item {
+        margin: 0 10px;
+      }
+      .navbar-nav-icons .nav-link-custom {
+        color: rgb(19, 18, 18);
+        font-weight: 500;
+        
+        text-align: center;
+      }
+      .navbar-nav-icons .nav-link-custom img {
+        width: 30px; 
+        height: 30px;
+        margin-bottom: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+        .navbar-nav .nav-link-custom img {
+        width: 30px; /* Icon size */
+        height: 30px;
+        margin-bottom: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      /* MAIN CONTENT STYLES */
+      .main-content {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: white; 
+        min-height: 70vh;
+      }
+      .view-profile-btn {
+        background-color: #e9ecef; /* Light grey button background */
+        color: var(--bs-text-color); /* Dark text for button */
+        border: none;
+        border-radius: 50rem; /* Pill shape */
+        padding: .5rem 1.5rem;
+        margin-top: 1rem; /* Space above button */
+      }
+      #addsponsor{
+        margin-left: 50%;
+      }
+      /* SPONSOR CARD STYLES */
+      .sponsor-card {
+        background-color: #f0f0f0; /* Light gray background to match the image */
+        border: none;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: left;
+        height: 100%; /* Ensure all cards are same height */
+      }
+      .sponsor-card strong {
+          font-weight: 700;
+          color: #000;
+      }
+      .sponsor-card p {
+          margin-bottom: 5px;
+          line-height: 1.5;
+      }
+      .search-container {
+        max-width: 600px;
+        margin: 0 auto 50px;
+      }
+      .search-input {
+        background-color: #e9ecef; /* Light gray background for input */
+        border: none;
+        border-radius: 50rem; /* Pill shape */
+        padding-right: 45px; /* Space for the button/icon */
+        height: 50px;
+      }
+      .search-button {
+        background-color: #0dcaf0; /* Default Bootstrap info/cyan color for the button/icon */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+      }
+      .view-profile-btn {
+          background-color: transparent;
+          color: #000;
+          border: none; /* No visible border for the button itself in the image */
+          border-radius: 0; 
+          padding: .4rem 0;
+          margin-top: 15px; 
+          display: block; 
+          width: 100%;
+          text-align: left; /* Aligned left, but the text inside seems centered/left in the image */
+          text-transform: capitalize; /* Ensure it matches "view Profile" */
+          font-weight: 600;
+          border-top: 1px solid #ccc; /* Add a subtle line above the button text as seen in the image */
+      }
+      .view-profile-btn-content {
+          text-align: center;
+          display: block;
+          padding-top: 10px;
+      }
+      
+      /* FOOTER STYLES (Maroon bottom bar only) */
+      .footer-bottom {
+        background-color: var(--bs-primary-dark); /* Dark red/maroon bottom */
+        color: white;
+        padding: 15px 0;
+        font-size: 0.9em;
+      }
+            :root {
+        --bs-primary-dark: #800000; /* maroon */
+        --bs-secondary-dark: #4b0082; /* indigo */
+        --bs-text-color: #333;
+      }
+
+      body {
+        overflow-x: hidden;
+        background-color: #f8f9fa;
+      }
+
+      .top-bar {
+        height: 10px;
+        background-color: var(--bs-primary-dark);
+      }
+
+      .text-maroon {
+        color: var(--bs-primary-dark) !important;
+      }
+
+      .offcanvas {
+        width: 250px;
+      }
+
+      .offcanvas .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        color: var(--bs-text-color);
+      }
+
+      .offcanvas .nav-link img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .navbar {
+        background-color: #fff;
+      }
+
+      .mission-box {
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer-section {
+        background-color: var(--bs-secondary-dark);
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-social-icons img {
+        width: 24px;
+        height: 24px;
+        margin: 0 5px;
+      }
+
+      .footer-bottom {
+        background-color: var(--bs-primary-dark);
+        color: white;
+        padding: 10px 0;
+        font-size: 0.9em;
+      }
+
+      .card-img-top-custom {
+        height: 250px;
+        object-fit: cover;
+      }
+
+            :root {
+        --bs-primary-dark: #800000; /* Darker red/maroon */
+        --bs-text-color: #333;
+        --bs-link-color: #4b0082; /* Indigo for links/accents */
+      }
+      body { overflow-x: hidden; background-color: #f8f9fa; }
+      .text-maroon { color: var(--bs-primary-dark) !important; }
+      .top-bar { height: 10px; background-color: var(--bs-primary-dark); }
+      .navbar { background-color: #fff; }
+      .main-content { padding-top: 50px; padding-bottom: 50px; min-height: 70vh; }
+      .footer-bottom { background-color: var(--bs-primary-dark); color: white; padding: 15px 0; font-size: 0.9em; }
+      
+      /* --- SEARCH BAR STYLES --- */
+      .search-container {
+        max-width: 600px;
+        margin: 0 auto 50px; 
+      }
+      .search-input {
+        background-color: #e9ecef; 
+        border: none;
+        border-radius: 50rem; 
+        padding-right: 45px;
+        height: 50px;
+      }
+      .search-button {
+        background-color: #0dcaf0; 
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        z-index: 5; 
+      }
+      /* --- SPONSOR CARD STYLES --- */
+      .sponsor-card {
+        border-left: 5px solid var(--bs-primary-dark); 
+        transition: transform 0.2s;
+        background-color: #ffffff; 
+        border: 1px solid #ddd;
+      }
+      .sponsor-card:hover {
+        transform: translateY(-3px); 
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+      }
+      .sponsor-logo {
+        width: 80px; 
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        padding: 5px;
+        border: 1px solid #e9ecef;
+      }
+      .impact-badge {
+        font-size: 0.9em;
+        background-color: var(--bs-link-color) !important;
+      }
+      .action-buttons-group {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+    </style>
+    <link rel="stylesheet" href="../static/CSS/form.css">
+  </head>
+  <body>
+
+    <div class="top-bar"></div>
+
+    <!-- Navbar + Toggle -->
+    <nav class="navbar shadow-sm">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <button class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+          ☰ Menu
+        </button>
+        <span class="navbar-brand mb-0 h1 text-maroon">ALU Talent Platform</span>
+      </div>
+    </nav>
+
+    <!-- Sliding Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-maroon">Navigation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('userview.successdisplayall')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('talent.display_all')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Talents"> Talents
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('userview.compdisplayall')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/1000/1000946.png" alt="Competitions"> Competitions
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('sponsor.displayall')}}">
+              <img src="../static/images/sponsors.png" alt="Sponsors"> Sponsors
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        
+            <ul class="flashes">
+              {% for category, message in messages %}
+                  <span class="alert alert-{{ category }}" role="alert">
+                  {{ message }}
+                  </span>
+              {% endfor %}
+            </ul>
+        {% endif %}
+      {% endwith %}
+
+    <div class="main-content">
+      <div class="container">
+            <div class="search-container">
+                <div class="input-group">
+                    <input type="text" class="form-control search-input" placeholder="type talent category" aria-label="type talent category">
+                    <button class="search-button">
+                        <img src="../static/images/search.png" class="img-fluid" alt="search"> 
+                    </button>
+                </div>
+            </div>
+          <div class="row" id="sponsorList">
+            {%for data in data%}
+            
+              <div class="col-md-6 mb-4 sponsor-item" data-category="{{data.category}}">
+                  <div class="sponsor-card p-3 shadow-sm d-flex align-items-center">
+                      <div class="me-4 text-center">
+                          <img src="{{ url_for('static', filename=data.companylogo) }}" alt="{{ data.company_name }} Logo" class="sponsor-logo">
+                          <p class="small fw-bold mb-0 text-maroon mt-1">{{data.company_name}}</p>
+                      </div>
+                      <div class="flex-grow-1 me-3">
+                          <h5 class="fw-bold mb-1">{{data.name}}</h5>
+                          <p class="mb-1 small text-muted">
+                              <i class="bi bi-geo-alt-fill me-1"></i> {{data.address}}
+                          </p>
+                          <p class="mb-1 small text-muted">
+                              <i class="bi bi-envelope-fill me-1"></i> {{data.email_addres}}
+                          </p>
+                          <div class="mt-2">
+                              <span class="badge impact-badge">
+                                  <i class="bi bi-star-fill me-1"></i> Supports: {{data.sponsoredtalents}}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="action-buttons-group">
+                          <a href="{{data.linkedIn}}" target="_blank" class="btn btn-outline-primary btn-sm w-100">
+                              <i class="bi bi-linkedin"></i> Connect
+                          </a>
+                      </div>
+                  </div>
+              </div>
+            {%endfor%}
+
+    <div class="footer-bottom text-center">
+        <p class="mb-0">&copy; copyright resevered by AluGoTalent</p>
+    </div>
+    <script src="../static/JS/sponsor_form.js"></script>
+    <script src="../static/JS/editsponsor.js"></script>
+    <script src="../static/JS/removesponsor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

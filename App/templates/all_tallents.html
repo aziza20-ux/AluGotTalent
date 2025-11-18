@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALU Talent Platform - Talents</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8c8S9i30sN6Q6yL3l0/T3N+K7Jz22uB/2G5yX8s+E2G+2Q+2K+2Q+2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      /* Custom styles to match the original image's color scheme */
+      :root {
+        --bs-primary-dark: #800000; /* Darker red/maroon for top/bottom bars */
+        --bs-secondary-dark: #4b0082; /* Deep purple/indigo for the footer sections - used only for the bottom bar in this new layout */
+        --bs-text-color: #333;
+      }
+      /* HEADER STYLES */
+      .top-bar-maroon {
+        background-color: var(--bs-primary-dark);
+        padding: 5px 0; /* Adding padding to contain the nav icons */
+      }
+      .navbar-nav .nav-link-custom {
+        color: rgb(16, 16, 16); /* Icons and text are white against the maroon bar */
+        font-weight: 500;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .navbar-nav .nav-link-custom img {
+        width: 30px; /* Icon size */
+        height: 30px;
+        margin-bottom: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      a {
+        text-decoration: none;
+      }
+      /* SEARCH AND CONTENT STYLES */
+      .main-content {
+        min-height: 70vh; /* Ensure content area is tall */
+        padding-top: 50px;
+        padding-bottom: 30px;
+        background-color: white; /* White background */
+      }
+      .search-container {
+        max-width: 600px;
+        margin: 0 auto 50px;
+      }
+      .search-input {
+        background-color: #e9ecef; /* Light gray background for input */
+        border: none;
+        border-radius: 50rem; /* Pill shape */
+        padding-right: 45px; /* Space for the button/icon */
+        height: 50px;
+      }
+      .search-button {
+        background-color: #0dcaf0; /* Default Bootstrap info/cyan color for the button/icon */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+      }
+      .talent-tabs h3 {
+        font-weight: 500;
+        cursor: pointer;
+        padding: 10px 0;
+        margin-bottom: 20px;
+      }
+      .talent-tabs .active-tab {
+          border-bottom: 2px solid var(--bs-primary-dark);
+          color: var(--bs-primary-dark);
+      }
+      /* TALENT CARD STYLES */
+      .talent-card {
+        border: none; /* No border for the card itself */
+        background-color: #f8f9fa; /* Light grey background for the card body */
+        border-radius: .5rem; /* Rounded corners */
+        text-align: center;
+        padding-bottom: 15px; /* Space for the button */
+      }
+      .talent-card-img {
+          width: 100%; /* Make image fill card width */
+          height: 200px; /* Fixed height for consistency */
+          object-fit: cover; /* Crop image to fit */
+          border-radius: .5rem .5rem 0 0; /* Rounded top corners */
+          margin-bottom: 1rem; /* Space below image */
+      }
+      .talent-card-body {
+          padding: 0 1rem; /* Padding inside card body */
+          text-align: left; /* Align text left as in the image */
+      }
+      .talent-card-body p {
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
+      }
+      .talent-card-body strong {
+          color: #555; /* Slightly darker text for labels */
+      }
+      .view-profile-btn {
+          background-color: #e9ecef; /* Light grey button background */
+          color: var(--bs-text-color); /* Dark text for button */
+          border: none;
+          border-radius: 50rem; /* Pill shape */
+          padding: .5rem 1.5rem;
+          margin-top: 1rem; /* Space above button */
+      }
+      /* FOOTER STYLES */
+      .footer-bottom {
+        background-color: var(--bs-primary-dark); /* Dark red/maroon bottom */
+        color: white;
+        padding: 15px 0;
+        font-size: 0.9em;
+      }
+            :root {
+        --bs-primary-dark: #800000; /* maroon */
+        --bs-secondary-dark: #4b0082; /* indigo */
+        --bs-text-color: #333;
+      }
+
+      body {
+        overflow-x: hidden;
+        background-color: #f8f9fa;
+      }
+
+      .top-bar {
+        height: 10px;
+        background-color: var(--bs-primary-dark);
+      }
+
+      .text-maroon {
+        color: var(--bs-primary-dark) !important;
+      }
+
+      .offcanvas {
+        width: 180px;
+      }
+
+      @media (max-width: 576px) {
+        .offcanvas {
+          width: 180px;
+        }
+      }
+
+
+      .offcanvas .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        color: var(--bs-text-color);
+      }
+
+      .offcanvas .nav-link img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .navbar {
+        background-color: #fff;
+      }
+
+      .mission-box {
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer-section {
+        background-color: var(--bs-secondary-dark);
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-social-icons img {
+        width: 24px;
+        height: 24px;
+        margin: 0 5px;
+      }
+
+      .footer-bottom {
+        background-color: var(--bs-primary-dark);
+        color: white;
+        padding: 10px 0;
+        font-size: 0.9em;
+      }
+
+      .card-img-top-custom {
+        height: 250px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="top-bar"></div>
+
+    <!-- Navbar + Toggle -->
+    <nav class="navbar shadow-sm">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <button class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+          ☰ Menu
+        </button>
+        <span class="navbar-brand mb-0 h1 text-maroon">ALU Talent Platform</span>
+      </div>
+    </nav>
+
+    <!-- Sliding Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-maroon">Navigation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('userview.successdisplayall')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('talent.display_all')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Talents"> Talents
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('userview.compdisplayall')}}">
+              <img src="https://cdn-icons-png.flaticon.com/512/1000/1000946.png" alt="Competitions"> Competitions
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('userview.sponsordisplayall')}}">
+              <img src="../static/images/sponsors.png" alt="Sponsors"> Sponsors
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+        
+            <ul class="flashes">
+              {% for category, message in messages %}
+                  <span class="alert alert-{{ category }}" role="alert">
+                  {{ message }}
+                  </span>
+              {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="main-content">
+      <div class="container">
+        
+        <div class="search-container">
+          <div class="input-group position-relative">
+            <input type="text" class="form-control search-input" placeholder="type talent category" aria-label="type talent category">
+            <button class="search-button">
+              <img src="../static/images/search.png" class="img-fluid" alt="search">
+            </button>
+          </div>
+        </div>
+
+        <div class="row text-center talent-tabs mb-4">
+          <div class="col-6">
+            <a href="{{url_for('talent.display_all')}}"><h3 class="active-tab text-muted">All talents</h3></a>
+  
+          </div>
+          <div class="col-6">
+            <a href="{{url_for('talent.mytalents')}}"><h3 class="text-muted">My Talents</h3></a>
+          </div>
+        </div>
+
+        <div class="row justify-content-center pt-3">
+          {% for talent in dict%}
+          <div class="col-md-4 mb-4">
+            <div class="card talent-card">
+              <div class="ratio ratio-16x9">
+                <iframe src="{{talent.talent_url}}?autoplay=1&mute=1&controls=0" frameborder="2" allowfullscreen></iframe>
+              </div>
+              <div class="talent-card-body">
+                <p><strong>Name:</strong> {{talent.talentname}}</p>
+                <p><strong>Category:</strong>{{talent.category}}</p>
+                <p><strong>Description:</strong>{{talent.talentdetails}}</p>
+                <!--<button class="btn btn-info edit-talent-btn" data-talent-id="{{talent.talentid}}">Edit</button> <button class="btn btn-info delete-talent-btn" data-talent-id="{{talent.talentid}}">Remove</button>-->
+                <button class="btn view-profile-btn btn-info">view profile</button>
+                
+              </div>
+            </div>
+          </div>
+         
+          {%endfor%}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+        <p class="mb-0">&copy; copyright resevered by AluGotTalent</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+      
+  </body>
+  </html>
