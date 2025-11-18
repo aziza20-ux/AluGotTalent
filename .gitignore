@@ -6,5 +6,5 @@ __pycache__/
 *.pyc
 App/__pycache__/
 *.pyc
-routes/__pycache__/
+App/routes/__pycache__/
 *.pyc
