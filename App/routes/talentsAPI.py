@@ -6,16 +6,23 @@ from ..models.sponsor import Sponsor
 from ..models.student import Student
 from ..models.talents import Talent
 from ..utils.convert_url import convert_to_embed_url
+from middleware import login_required
 
 
 talent_bp = Blueprint('talent',__name__, url_prefix='/talent')
 
 @talent_bp.route('/addtalent', methods=['POST','GET']) #done
+@login_required
 def add_talent():
     talentname = request.form.get('talentname')
     talentditails = request.form.get('details')
     talent_url = request.form.get('url')
     talentcategory = request.form.get('category')
+    email=request.form.get('email')
+    phone=request.form.get('phone')
+    tiktok=request.form.get('tiktok')
+    inst=request.form.get('inst')
+    facebook=request.form.get('facebook')
 
     
    
@@ -24,10 +31,13 @@ def add_talent():
     talent = db.session.query(Talent).filter_by(talent_url=embeded_url).first()
 
     if talent:
-        flash('talent already exists!','warning')
         db.session.rollback()
+        flash('talent already exists!','warning')
+        
+        return redirect(url_for('talent.mytalents'))
     try:
-        newtalent = Talent(talentname=talentname,talentdetails=talentditails,talent_url=embeded_url,category=talentcategory)
+        newtalent = Talent(talentname=talentname,talentdetails=talentditails,email=email,phone=phone,tiktok=tiktok,
+                           talent_url=embeded_url, inst=inst,facebook=facebook, category=talentcategory)
         newtalent.userid = g.user_id
         db.session.add(newtalent)
         db.session.commit()
@@ -38,6 +48,7 @@ def add_talent():
         return redirect(url_for('talent.mytalents'))
     
 @talent_bp.route('/delete/<int:id>',methods=['DELETE']) #done
+@login_required
 def delete_talent(id):
     talent = db.session.query(Talent).filter(Talent.talentid==id).first()
     try:
@@ -50,6 +61,7 @@ def delete_talent(id):
         db.session.rollback()
         flash(f'unexpected error occured!!: {e}','danger')
 @talent_bp.route('/edit/<int:id>', methods=['POST'])
+@login_required
 def edit_talent(id):
     changes = request.form
     talent = db.session.query(Talent).filter_by(talentid=id).first()
@@ -93,6 +105,7 @@ def edit_talent(id):
     return redirect(url_for('talent.mytalents'))
 
 @talent_bp.route('/mytalents',methods=['GET'])
+@login_required
 def mytalents():
     #all_talents = db.session.query(Talent).all()
     user_talent = db.session.query(Talent).filter(Talent.userid==g.user_id).all()
@@ -103,10 +116,12 @@ def mytalents():
     
     return render_template('my_talents.html',dict=user_talent)
 @talent_bp.route('/displayall',methods=['GET'])
+@login_required
 def display_all():
     all_talents = db.session.query(Talent).all()
     return render_template('all_tallents.html',dict=all_talents)
 @talent_bp.route('/home',methods=['GET'])
+@login_required
 def home():
     return render_template('home.html')
 

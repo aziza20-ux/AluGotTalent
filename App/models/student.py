@@ -7,7 +7,6 @@ class Student(User):
     dateofbirth = db.Column(db.DateTime)
     gradelevel = db.Column(db.Integer)
     school = db.Column(db.String(50))
-    picture = db.Column(db.String(225))
     #talentid = db.Column(db.Integer, db.ForeignKey('talents.talentid'),primary_key=True)
 
     user = db.relationship('User', back_populates= 'student')

@@ -58,21 +58,21 @@
     </style>
 </head>
 <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-
-        {% if messages %}
-        
-            <ul class="flashes">
-              {% for category, message in messages %}
-                  <span class="alert alert-{{ category }}" role="alert">
-                  {{ message }}
-                  </span>
-              {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
 
     <div class="admin-card card">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+            
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <span class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                    </span>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <div class="card-header-maroon">
             <h4 class="mb-0"><i class="bi bi-person-lock me-2"></i> Admin Login / Settings</h4>
         </div>
@@ -91,7 +91,7 @@
 
                 <div class="mb-4">
                     <label for="adminSecretKey" class="form-label fw-bold">Secret Key</label>
-                    <input type="text" class="form-control" id="adminSecretKey" name="secretkey" required placeholder="Enter 2FA Code or Setup Key">
+                    <input type="password" class="form-control" id="adminSecretKey" name="secretkey" required placeholder="Enter 2FA Code or Setup Key">
                     <div id="secretKeyHelp" class="form-text">
                         This could be a one-time code or a registration key.
                     </div>

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ALU Talent Platform - Talents</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8c8S9i30sN6Q6yL3l0/T3N+K7Jz22uB/2G5yX8s+E2G+2Q+2K+2Q+2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
       /* Custom styles to match the original image's color scheme */
@@ -198,6 +199,12 @@
         height: 250px;
         object-fit: cover;
       }
+    .highlight-yellow {
+    background-color: yellow;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
     </style>
   </head>
   <body>
@@ -243,9 +250,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile
-            </a>
+            <a href="{{url_for('auth.logout')}}"><span class="bi bi-box-arrow-right">Logout</span></a>
           </li>
         </ul>
       </div>
@@ -269,10 +274,7 @@
         
         <div class="search-container">
           <div class="input-group position-relative">
-            <input type="text" class="form-control search-input" placeholder="type talent category" aria-label="type talent category">
-            <button class="search-button">
-              <img src="../static/images/search.png" class="img-fluid" alt="search">
-            </button>
+            <input type="text" id="search-input" class="form-control search-input" placeholder="search talent by category" aria-label="type talent category">
           </div>
         </div>
 
@@ -288,17 +290,25 @@
 
         <div class="row justify-content-center pt-3">
           {% for talent in dict%}
-          <div class="col-md-4 mb-4">
+          <div class="col-md-4 mb-4" data-category="{{talent.category}}">
             <div class="card talent-card">
               <div class="ratio ratio-16x9">
                 <iframe src="{{talent.talent_url}}?autoplay=1&mute=1&controls=0" frameborder="2" allowfullscreen></iframe>
               </div>
               <div class="talent-card-body">
-                <p><strong>Name:</strong> {{talent.talentname}}</p>
-                <p><strong>Category:</strong>{{talent.category}}</p>
-                <p><strong>Description:</strong>{{talent.talentdetails}}</p>
+                <p><i class="bi bi-person-fill" style="color: #541e78;"></i>Name: {{talent.talentname}}</p>
+                <p><i class="bi bi-tags" style="color: #541e78;"></i>
+                            Category: <span class="talent-category">{{talent.category}}</span>
+                          </p>
+
+                <p><i class="bi bi-envelope-fill" style="color: #541e78;"></i>email:{{talent.email}}</p>
+                <p><i class="bi bi-telephone-fill" style="color: #541e78;"></i>Phone:{{talent.phone}}</p>
+                <p><i class="bi bi-instagram" style="color: #541e78;"></i>Instagram: <a href="{{talent.inst}}" target="_blank">visit profile</a></p>
+                <p><i class="bi bi-facebook" style="color: #541e78;"></i>facebook:<a href="{{talent.facebook}}" target="_blank">visit profile</a></p>
+                <p><i class="fab fa-tiktok" style="color: #541e78;"></i>tiktok:<a href="{{talent.tiktok}}" target="_blank">visit profile</a></p>
+                <p><i class="bi bi-card-text" style="color: #541e78;"></i>Description:{{talent.talentdetails}}</p>
                 <!--<button class="btn btn-info edit-talent-btn" data-talent-id="{{talent.talentid}}">Edit</button> <button class="btn btn-info delete-talent-btn" data-talent-id="{{talent.talentid}}">Remove</button>-->
-                <button class="btn view-profile-btn btn-info">view profile</button>
+              
                 
               </div>
             </div>
@@ -313,7 +323,38 @@
     <div class="footer-bottom text-center">
         <p class="mb-0">&copy; copyright resevered by AluGotTalent</p>
     </div>
+    <script>
 
+          document.addEventListener("DOMContentLoaded", () => {
+              const searchInput = document.getElementById("search-input");
+              const cards = document.querySelectorAll(".col-md-4[data-category]"); // ✅ Correct selector
+
+              searchInput.addEventListener("input", function () {
+                  const searchValue = this.value.toLowerCase().trim();
+
+                  cards.forEach(card => {
+                      const categorySpan = card.querySelector(".talent-category");
+                      const categoryText = card.getAttribute("data-category").toLowerCase(); // ✅ Get from data attribute
+
+                      if (searchValue === "") {
+                          // Show all cards when search is empty
+                          card.style.display = "block";
+                          categorySpan.textContent = card.getAttribute("data-category"); // Reset to original
+                      } else if (categoryText.includes(searchValue)) {
+                          // Show and highlight matching cards
+                          card.style.display = "block";
+                          
+                          const originalText = card.getAttribute("data-category");
+                          const regex = new RegExp(`(${searchValue})`, 'gi');
+                          categorySpan.innerHTML = originalText.replace(regex, '<span class="highlight-yellow">$1</span>');
+                      } else {
+                          // Hide non-matching cards
+                          card.style.display = "none";
+                      }
+                  });
+              });
+          });
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
       

@@ -39,7 +39,7 @@ def create_app(test_config=None):
             g.email = None
         else:
             g.user_id = user_id
-            email = email
+            g.email = email
     @app.route('/')
     def index():
         return redirect(url_for('userview.successdisplayall'))

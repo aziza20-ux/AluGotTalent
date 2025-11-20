@@ -7,12 +7,15 @@ from ..models.user_model import User
 from ..models.sponsor import Sponsor
 from ..models.student import Student
 from ..models.talents import Talent
+from middleware import login_required
 #from ..utils.convert_url import convert_to_embed_url
 
 
 sponsor_bp = Blueprint('sponsor',__name__, url_prefix='/sponsor')
 
+
 @sponsor_bp.route('/addsponsor', methods=['POST','GET']) #done
+@login_required
 def add_sponsor():
     name = request.form.get('name')
     companyname=request.form.get('company_name')
@@ -67,6 +70,7 @@ def add_sponsor():
         return redirect(url_for('sponsor.displayall'))
     
 @sponsor_bp.route('/delete/<int:id>',methods=['DELETE']) #done
+@login_required
 def delete_sponsor(id):
     sponsor = db.session.query(Sponsor).filter(Sponsor.sponsorid==id).first()
     try:
@@ -80,6 +84,7 @@ def delete_sponsor(id):
         flash(f'unexpected error occured!!: {e}','danger')
         return redirect(url_for('sponsor.displayall'))
 @sponsor_bp.route('/edit/<int:id>', methods=['POST'])
+@login_required
 def edit_sponsor(id):
     changes = request.form
     sponsor = db.session.query(Sponsor).filter_by(sponsorid=id).first()
@@ -121,6 +126,7 @@ def edit_sponsor(id):
         return redirect(url_for('sponsor.displayall'))
 
 @sponsor_bp.route('/displayall',methods=['GET'])
+@login_required
 def displayall():
     all_sponsor = db.session.query(Sponsor).all()
     return render_template('admin/sponsors.html',all_sponsor=all_sponsor)

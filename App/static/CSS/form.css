@@ -9,6 +9,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow-y: auto; /* allow vertical scrolling */
+    padding: 20px; /* spacing from top/bottom */
 }
 #form-content {
     background-color: rgb(240, 234, 234);
@@ -17,7 +19,9 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     max-width: 400px;
     width: 90%;
-    z-index: 1001
+    z-index: 1001;
+    max-height: 90vh; /* prevent content from exceeding viewport height */
+    overflow-y: auto; /* scroll inside the modal */
 }
 .my-form{
     background-color: rgba(239, 238, 240, 0.5);

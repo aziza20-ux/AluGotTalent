@@ -290,12 +290,37 @@
           align-items: center;
           justify-content: center;
       }
+    .highlight-yellow {
+      background-color: yellow;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .sponsor-card {
+      display: flex;
+      flex-wrap: wrap;              /* <-- allow wrapping */
+      align-items: flex-start;      /* keep clean alignment */
+  }
+
+  .sponsor-card > div {
+      flex: 1 1 60%;                /* center info takes more space */
+  }
+
+  .sponsor-card .action-buttons-group {
+      flex: 0 0 120px;              /* button area fixed width */
+      text-align: center;
+  }
+
+  .sponsor-card .me-4 {
+      flex: 0 0 100px;              /* image area width */
+  }
+
+
     </style>
     <link rel="stylesheet" href="../static/CSS/form.css">
   </head>
   <body>
 
-    <div class="top-bar"></div>
+   <div class="top-bar"></div>
 
     <!-- Navbar + Toggle -->
     <nav class="navbar shadow-sm">
@@ -331,14 +356,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('sponsor.displayall')}}">
+            <a class="nav-link" href="#">
               <img src="../static/images/sponsors.png" alt="Sponsors"> Sponsors
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="profile.html">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile
-            </a>
+            <a href="{{url_for('auth.logout')}}"><span class="bi bi-box-arrow-right">Logout</span></a>
           </li>
         </ul>
       </div>
@@ -361,49 +384,69 @@
       <div class="container">
             <div class="search-container">
                 <div class="input-group">
-                    <input type="text" class="form-control search-input" placeholder="type talent category" aria-label="type talent category">
-                    <button class="search-button">
-                        <img src="../static/images/search.png" class="img-fluid" alt="search"> 
-                    </button>
+                    <input type="text" class="form-control input-search" id="search-input" placeholder="search sponsor by company" aria-label="type talent category">
                 </div>
             </div>
-          <div class="row" id="sponsorList">
-            {%for data in data%}
-            
-              <div class="col-md-6 mb-4 sponsor-item" data-category="{{data.category}}">
-                  <div class="sponsor-card p-3 shadow-sm d-flex align-items-center">
-                      <div class="me-4 text-center">
-                          <img src="{{ url_for('static', filename=data.companylogo) }}" alt="{{ data.company_name }} Logo" class="sponsor-logo">
-                          <p class="small fw-bold mb-0 text-maroon mt-1">{{data.company_name}}</p>
-                      </div>
-                      <div class="flex-grow-1 me-3">
-                          <h5 class="fw-bold mb-1">{{data.name}}</h5>
-                          <p class="mb-1 small text-muted">
-                              <i class="bi bi-geo-alt-fill me-1"></i> {{data.address}}
-                          </p>
-                          <p class="mb-1 small text-muted">
-                              <i class="bi bi-envelope-fill me-1"></i> {{data.email_addres}}
-                          </p>
-                          <div class="mt-2">
-                              <span class="badge impact-badge">
-                                  <i class="bi bi-star-fill me-1"></i> Supports: {{data.sponsoredtalents}}
-                              </span>
-                          </div>
-                      </div>
-                      <div class="action-buttons-group">
-                          <a href="{{data.linkedIn}}" target="_blank" class="btn btn-outline-primary btn-sm w-100">
-                              <i class="bi bi-linkedin"></i> Connect
-                          </a>
-                      </div>
-                  </div>
-              </div>
-            {%endfor%}
+        <div class="row" id="sponsorList">
+          {% for data in data %}
+            <div class="col-md-6 mb-4 sponsor-item"
+                data-category="{{data.category}}"
+                data-company="{{data.company_name}}">
+
+                <div class="sponsor-card p-3 shadow-sm d-flex align-items-center">
+                    <div class="me-4 text-center">
+                        <img src="{{ url_for('static', filename=data.companylogo) }}"
+                            alt="{{ data.company_name }} Logo"
+                            class="sponsor-logo">
+
+                        <p class="small fw-bold mb-0 text-maroon mt-1">
+                            {{ data.company_name }}
+              
+                        </p>
+                    </div>
+
+                    <div class="flex-grow-1 me-3">
+                        <h5 class="fw-bold mb-1">{{ data.name }}</h5>
+
+                        <p class="mb-1 small text-muted">
+                            <i class="bi bi-geo-alt-fill me-1"></i> {{ data.address }}
+                        </p>
+
+                        <p class="mb-1 small text-muted">
+                            <i class="bi bi-envelope-fill me-1"></i> {{ data.email_addres }}
+                        </p>
+
+                        <div class="mt-2">
+                            <span class="badge impact-badge">
+                                <i class="bi bi-star-fill me-1"></i>
+                                Supports: {{ data.sponsoredtalents }}
+                            </span>
+                            <span class="badge impact-badge">
+                                <i class="bi bi-tags-fill "></i>
+                                Category:  {{data.category}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons-group">
+                        <a href="{{ data.linkedIn }}" target="_blank"
+                          class="btn btn-outline-primary btn-sm w-100">
+                            <i class="bi bi-linkedin"></i> Connect
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+          {% endfor %}
+        </div>
+      </div>
 
     <div class="footer-bottom text-center">
         <p class="mb-0">&copy; copyright resevered by AluGoTalent</p>
     </div>
     <script src="../static/JS/sponsor_form.js"></script>
     <script src="../static/JS/editsponsor.js"></script>
+    <script src="../static/JS/smartsearch.js"></script>
     <script src="../static/JS/removesponsor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

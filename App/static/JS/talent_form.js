@@ -18,6 +18,16 @@ function CreateForm(){
     <h2>Talent Details</h2>
     <label for="name" ><b>Name:</b></label>
     <input type="text" id="nameInput" name="talentname" placeholder="for example singing">
+    <label for="email" ><b>email:</b></label>
+    <input type="email" id="email" name="email" placeholder="your work email">
+    <label for="phone" ><b>phone number:</b></label>
+    <input type="text" id="phone" name="phone" placeholder="active number">
+    <label for="insta" ><b>instagram:</b></label>
+    <input type="url" id="insta" name="inst" placeholder="instagram link">
+    <label for="tiktok" ><b>tiktok:</b></label>
+    <input type="url" id="tiktok" name="tiktok" placeholder="tiktok link">
+    <label for="face" ><b>facebook:</b></label>
+    <input type="url" id="face" name="facebook" placeholder="facebook link">
     <label for="browse"><b>category:</b></label>
     <input class="form-control" id="browse" name="category" list="listbrowses">
     <datalist id="listbrowses">

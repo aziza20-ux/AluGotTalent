@@ -125,7 +125,7 @@
                     <i class="bi bi-person-circle"></i> Admin
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#!">Profile</a>
+                    
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{url_for('admin.logout')}}">Logout</a>
                 </div>
@@ -167,9 +167,9 @@
                     <div class="card kpi-card h-100">
                         <div class="card-header"><i class="bi bi-award me-2"></i> Active Competitions</div>
                         <div class="card-body">
-                            <h1 class="display-4 text-maroon fw-bold">4</h1>
+                            <h1 class="display-4 text-maroon fw-bold">{{comp}}</h1>
 
-                            <a href="#" class="btn btn-sm btn-outline-secondary">View All</a>
+                            <a href="{{url_for('dash.competitions')}}" class="btn btn-sm btn-outline-secondary">View All</a>
                         </div>
                     </div>
                 </div>
@@ -178,9 +178,9 @@
                     <div class="card kpi-card h-100">
                         <div class="card-header"><i class="bi bi-cash-coin me-2"></i> Total Active Sponsors</div>
                         <div class="card-body">
-                            <h1 class="display-4 text-maroon fw-bold">12</h1>
+                            <h1 class="display-4 text-maroon fw-bold">{{sponsor}}</h1>
                
-                            <a href="#" class="btn btn-sm btn-outline-secondary">Manage Sponsors</a>
+                            <a href="{{url_for('dash.sponsors')}}" class="btn btn-sm btn-outline-secondary">Manage Sponsors</a>
                         </div>
                     </div>
                 </div>
@@ -189,9 +189,9 @@
                     <div class="card kpi-card h-100">
                         <div class="card-header"><i class="bi bi-star me-2"></i> Live Success Stories</div>
                         <div class="card-body">
-                            <h1 class="display-4 text-maroon fw-bold">6</h1>
+                            <h1 class="display-4 text-maroon fw-bold">{{success}}</h1>
 
-                            <a href="#" class="btn btn-sm btn-outline-secondary">Edit Carousel</a>
+                            <a href="{{url_for('success.displayall')}}" class="btn btn-sm btn-outline-secondary">Edit Carousel</a>
                         </div>
                     </div>
                 </div>

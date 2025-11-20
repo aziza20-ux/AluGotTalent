@@ -2,10 +2,12 @@ from flask import render_template, session,url_for,jsonify,redirect, Blueprint,f
 from extentions import db
 from datetime import datetime
 from ..models.competitions import Comp
+from middleware import login_required
 
 comp_bp = Blueprint('compe',__name__, url_prefix='/comp')
 
 @comp_bp.route('/addcomp',methods=['POST','GET'])
+@login_required
 def add_comp():
     if request.method == 'POST':
         title=request.form.get('title')
@@ -28,6 +30,7 @@ def add_comp():
             db.session.rollback()
     return render_template('competitions.html')
 @comp_bp.route('/editcomp/<int:id>',methods=['POST'])
+@login_required
 def edit_comp(id):
     changes = request.form
     comp = db.session.query(Comp).filter_by(compid=id).first()
@@ -69,6 +72,7 @@ def edit_comp(id):
 
         return redirect(url_for('compe.display_all_comp'))#the redirect for route which display all competitions
 @comp_bp.route('/deletecomp/<int:id>',methods=['DELETE'])
+@login_required
 def delete_comp(id):
     comp = db.session.query(Comp).filter_by(compid=id).first()
 
@@ -85,6 +89,7 @@ def delete_comp(id):
         return redirect(url_for('compe.display_all_comp'))
         
 @comp_bp.route('/displayallcomp',methods=['GET'])
+@login_required
 def display_all_comp():
     all_comp = db.session.query(Comp).all()
     total=len(all_comp)

@@ -21,15 +21,24 @@ def register():
 
         if not password and not email:
             flash('you need to provide atleast email and password!', 'danger')
+        user = db.session.query(Admin).first()
+        if user:
+            flash('admin account is already there and one account is allowed please login instead','warning')
+            return redirect(url_for('admin.login'))
+
         if secretkey !=key:
             flash('you must provide right secret key','danger')
             return render_template('admin/formadmin.html')
         try:
-            newuser = Admin(email=email,password=password,secretkey=secretkey)
+            newuser = Admin(emaile=email,password=password,secretkey=secretkey)
             newuser.set_hashpassword(password)
             db.session.add(newuser)
             db.session.commit()
             flash('register in successfully as admin','success')
+            return redirect(url_for('admin.login'))
+        except IntegrityError:
+            db.session.rollback()
+            flash('user already exist please login!!', 'warning')
             return redirect(url_for('admin.login'))
         except Exception as e:
             db.session.rollback()
@@ -51,16 +60,17 @@ def login():
         if secretkey != key:
             flash('you must put admin secret key','danger')
             return render_template('admin/formadmin.html')
+        
 
         if not email and not password:
             flash('please provide your email and password before proceeding!!','info')
             return render_template('admin/formadmin.html')
-        user = db.session.query(Admin).filter_by(email=email).first()
+        user = db.session.query(Admin).filter_by(emaile=email).first()
         if user and user.check_password(password):
-            #session['user_id'] = user.userid
-            #session['email']=user.email
+            session['user_id'] = user.adminid
+            session['email']=user.emaile
             flash(f'logged in successfully as admin', 'success')
-            return render_template('admin/dashboardhome.html')
+            return redirect(url_for('dash.dashboard'))
         flash('invalid email or password!! please check and try again!!','danger')
         return render_template('admin/formadmin.html')
     return render_template('admin/login.html')

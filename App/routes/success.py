@@ -9,11 +9,13 @@ from ..models.student import Student
 from ..models.talents import Talent
 from ..models.successstroy import Story
 from ..utils.convert_url import convert_to_embed_url
+from middleware import login_required
 
 
 success_bp = Blueprint('success',__name__, url_prefix='/success')
 
 @success_bp.route('/addsuccess', methods=['POST','GET']) #done
+@login_required
 def add_success():
     title = request.form.get('title')
     successditails = request.form.get('details')
@@ -84,6 +86,7 @@ def delete_talent(id):
         flash(f'unexpected error occured!!: {e}','danger')
         return redirect(url_for('success.displayall'))
 @success_bp.route('/displayall',methods=['GET'])
+@login_required
 def displayall():
     all_sponso = db.session.query(Story).all()
     return render_template('admin/success.html',all_sponso=all_sponso)
