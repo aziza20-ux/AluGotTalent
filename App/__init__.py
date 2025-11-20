@@ -34,8 +34,8 @@ def create_app(test_config=None):
     app.config['SECRET_KEY'] = secret_key
 
     init_extensions(app) 
-   # with app.app_context():
-      #  db.create_all()
+    with app.app_context():
+        db.create_all()
 
 
     @app.before_request
