@@ -59,7 +59,7 @@ def login():
         if user and user.check_password(password):
             session['user_id'] = user.userid
             session['email']=user.emaile
-            flash(f'logged in successfully as {user.name}', 'success')
+            flash(f'logged in successfully as {user.emaile}', 'success')
             return redirect(url_for('talent.display_all'))
         flash('invalid email or password!! please check and try again!!','danger')
         return render_template('login.html')

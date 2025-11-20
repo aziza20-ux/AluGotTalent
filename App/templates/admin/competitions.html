@@ -117,7 +117,20 @@
             </div>
         </div>
     </nav>
-
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes list-unstyled position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 1050;">
+                    {% for category, message in messages %}
+                        <li>
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title text-maroon">Management</h5>
@@ -186,5 +199,21 @@
     <script src="{{url_for('static', filename='JS/competitions.js')}}"></script>
     <script src="{{url_for('static', filename='JS/removecompetition.js')}}"></script>
     <script src="{{url_for('static', filename='JS/editcompetition.js')}}"></script>
+
+        <script>
+            // Wait for the page to load
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select all flash alerts
+                const alerts = document.querySelectorAll('.alert');
+                alerts.forEach(alert => {
+                    // Set timeout to remove alert after 3 seconds (3000ms)
+                    setTimeout(() => {
+                        // Bootstrap 5 method to close alert
+                        const bsAlert = new bootstrap.Alert(alert);
+                        bsAlert.close();
+                    }, 3000);
+                });
+            });
+        </script>
 </body>
 </html>
