@@ -10,7 +10,7 @@ function CreateFormCompetitions(){
     const newform = document.createElement('form');
     newform.className = 'my-form';
     newform.method ='POST';
-    newform.action = 'http://127.0.0.1:5000/comp/addcomp'
+    newform.action = '/comp/addcomp'
     
     newform.innerHTML =`
     <h2>Competition Details</h2>
