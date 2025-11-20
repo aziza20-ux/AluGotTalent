@@ -14,7 +14,7 @@ def register():
     if request.method == 'POST':
         name = request.form.get('name')
         emaile = request.form.get('email')
-        phone = request.form.get('phone')
+        #phone = request.form.get('phone')
         password = request.form.get('password')
         role = request.form.get('role')
 
@@ -30,7 +30,7 @@ def register():
 
 
         try:
-            newuser = User(name=name,emaile=emaile,phone=phone,role=role)
+            newuser = User(name=name,emaile=emaile,role=role)
             newuser.set_hashpassword(password)
             db.session.add(newuser)
             db.session.commit()

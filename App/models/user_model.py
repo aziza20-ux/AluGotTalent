@@ -6,7 +6,7 @@ class User(db.Model):
     userid = db.Column(db.Integer, primary_key = True,autoincrement=True)
     name = db.Column(db.String(50))
     emaile=db.Column(db.String(50), unique=True, nullable=False)
-    phone = db.Column(db.Integer)
+    #phone = db.Column(db.Integer)
     password = db.Column(db.String(255))
     role = db.Column(db.String(50))
 
