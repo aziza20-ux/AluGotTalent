@@ -21,9 +21,17 @@ from extentions import db, migrate, init_extensions
 from App.models import user_model, talents, sponsor, student, successstroy
 def create_app(test_config=None):
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///my_database.db'
+    # Load external PostgreSQL URL (Render)
+    database_url = os.environ.get("DATABASE_URL")
+
+    # Render sometimes provides postgres:// instead of postgresql://
+    if database_url and database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SECRET_KEY'] = 'testing'
+    secret_key = os.environ.get("SECRET_KEY", "testing")
+    app.config['SECRET_KEY'] = secret_key
 
     init_extensions(app) 
    # with app.app_context():
