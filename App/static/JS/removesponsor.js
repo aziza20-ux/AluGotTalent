@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Retrieve the talent ID from the custom data attribute
             const talentId = this.getAttribute('data-sponsor-id');
             
-            if (confirm(`Are you sure you want to delete talent ID ${talentId}?`)) {
+            if (confirm(`Are you sure you want to delete sponsor ID ${talentId}?`)) {
                 
                 // Construct the DELETE URL
                 const deleteUrl = `/sponsor/delete/${talentId}`;
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // If no redirect, just reload the page to show changes
                         window.location.reload(); 
                     } else {
-                        alert('Failed to delete talent.');
+                        alert('Failed to sponsor talent.');
                     }
                 })
                 .catch(error => {

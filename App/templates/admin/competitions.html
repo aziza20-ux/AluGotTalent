@@ -158,12 +158,13 @@
         <div class="container">
             <h2 class="mb-4 text-maroon">Competition Management</h2>
             
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
                 <h4>All Competitions ({{total}} total)</h4>
                 <button class="btn btn-maroon" id="addcompetition">
                     <i class="bi bi-plus-circle me-1"></i> Add New Competition
                 </button>
             </div>
+
 
             <div class="competition-list">
                 {%for comp in all_comp%}
@@ -190,6 +191,7 @@
                 {%endfor%}
 
             </div>
+        </div>
     </div>
     <div class="footer-bottom text-center mt-auto py-3">
         <p class="mb-0">&copy; copyright reserved by AluGotTalent</p>

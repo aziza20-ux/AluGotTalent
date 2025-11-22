@@ -25,9 +25,11 @@ def add_talent():
     facebook=request.form.get('facebook')
 
     
-   
-    embeded_url = convert_to_embed_url(talent_url)
-
+    try:
+        embeded_url = convert_to_embed_url(talent_url)
+    except Exception as e:
+        flash(f'unxepected error occured as {e}')
+    
     talent = db.session.query(Talent).filter_by(talent_url=embeded_url).first()
 
     if talent:
