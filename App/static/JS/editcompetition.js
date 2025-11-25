@@ -49,6 +49,8 @@ function CreateForm(compId) {
     </datalist>
     <label for="name" ><b>Deadline:</b></label>
     <input type="date" id="nameInput" name="deadline" placeholder="">
+    <label for="name" ><b>apply link:</b></label>
+    <input type="url" id="nameInput" name="appylink" placeholder="https://....">
 
     <button type="submit" class="btn btn-info rounded">Save</button>
     `; 

@@ -14,13 +14,14 @@ def add_comp():
         details = request.form.get('details')
         category = request.form.get('category')
         deadline= request.form.get('deadline')
+        appylink=request.form.get('appylink')
         try:
             parse_date = datetime.strptime(deadline, '%Y-%m-%d').date()
         except ValueError:
             flash('invalid format!!','danger')
             return redirect(url_for('compe.display_all_comp'))
         try:       
-            newcomp = Comp(compdetails=details,deadline=parse_date,category=category,title=title)
+            newcomp = Comp(compdetails=details,deadline=parse_date,category=category,title=title, appylink=appylink)
             db.session.add(newcomp)
             db.session.commit()
             flash('competitions added successfully','success')
