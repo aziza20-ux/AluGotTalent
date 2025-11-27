@@ -14,7 +14,10 @@ AluGotTalent is a platform designed for learners to showcase their talents, conn
 
 ## Screenshots
 
-> _To be added by repository maintainers (suggested: screenshots of talent list, competitions page, admin dashboard, profile management)._
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/70c4dfe9-79ac-4374-9913-313e6b63f49d" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/c0873eb1-a00c-47d7-87b6-30e350faa5fc" />
+
+
 
 ## Technologies Used
 
