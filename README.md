@@ -125,4 +125,5 @@ _This project currently does not specify a license. Please refer to the reposito
 
 **More info:** [AluGotTalent on GitHub](https://github.com/aziza20-ux/AluGotTalent)
 
-> _Note: This README was generated based on available project files. [View code search results for details](https://github.com/search?q=repo%3Aaziza20-ux%2FAluGotTalent+AluGotTalent&type=code)._
+link to demo video https://youtu.be/EwnYNVX-7VQ
+link to AluGotTalent https://alugottalent.onrender.com/
