@@ -104,7 +104,7 @@ Open `http://localhost:5000` in your browser.
 
 - `App/templates/` – HTML templates for all user-facing and admin pages (login, register, profile, competitions, etc.).
 - `App/static/` – Static files such as CSS, JS, and images.
-- <img width="220" height="735" alt="image" src="https://github.com/user-attachments/assets/cb7716e4-ca5d-43df-b422-933b50f912fd" />
+- <img width="220" height="600" alt="image" src="https://github.com/user-attachments/assets/cb7716e4-ca5d-43df-b422-933b50f912fd" />
 
 
 ## Contributing
