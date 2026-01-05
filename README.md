@@ -14,7 +14,10 @@ AluGotTalent is a platform designed for learners to showcase their talents, conn
 
 ## Screenshots
 
-> _To be added by repository maintainers (suggested: screenshots of talent list, competitions page, admin dashboard, profile management)._
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/70c4dfe9-79ac-4374-9913-313e6b63f49d" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/c0873eb1-a00c-47d7-87b6-30e350faa5fc" />
+
+
 
 ## Technologies Used
 
@@ -101,6 +104,8 @@ Open `http://localhost:5000` in your browser.
 
 - `App/templates/` – HTML templates for all user-facing and admin pages (login, register, profile, competitions, etc.).
 - `App/static/` – Static files such as CSS, JS, and images.
+- <img width="220" height="600" alt="image" src="https://github.com/user-attachments/assets/cb7716e4-ca5d-43df-b422-933b50f912fd" />
+
 
 ## Contributing
 
@@ -120,4 +125,5 @@ _This project currently does not specify a license. Please refer to the reposito
 
 **More info:** [AluGotTalent on GitHub](https://github.com/aziza20-ux/AluGotTalent)
 
-> _Note: This README was generated based on available project files. [View code search results for details](https://github.com/search?q=repo%3Aaziza20-ux%2FAluGotTalent+AluGotTalent&type=code)._
+link to demo video https://youtu.be/EwnYNVX-7VQ
+link to AluGotTalent https://alugottalent.onrender.com/
